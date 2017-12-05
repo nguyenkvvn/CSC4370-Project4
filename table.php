@@ -1,6 +1,9 @@
 <?php
 
-include("config.php");
+$host = "localhost"; 
+$user = "user12"; 
+$pass = "user12"; 
+$db = "mshah15"; 
 
 function execute_query($query) {
 
