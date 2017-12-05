@@ -1,6 +1,7 @@
 <?php
  ob_start();
  session_start();
+ include("config.php");
  if( isset($_SESSION['user'])!="" ){
   header("Location: home.php");
  }
@@ -65,15 +66,18 @@
   if( !$error ) {
    
    $query = "INSERT INTO CUSTOMERS(Username,Password,Email) VALUES('$name','$password','$email')";
-   $res = mysqli_query($conn, $query);
+   $res = mysqli_query($conn, $query);   //where is $conn declared, undefined here.
     
-   if ($res) {
+   if ($res) 
+   {
     $errTyp = "success";
     $errMSG = "Successfully registered, you may login now";
     unset($name);
     unset($email);
     unset($pass);
-   } else {
+   } 
+   else 
+   {
     $errTyp = "danger";
     $errMSG = "Something went wrong, try again later..."; 
    }    
