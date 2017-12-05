@@ -41,7 +41,8 @@ execute_query($query);
 $query = "CREATE TABLE CUSTOMERS(
 		Id            INT    NOT NULL AUTO_INCREMENT,
 		Username      TEXT, 
-		Password      TEXT, 
+		Password      TEXT,
+		Email         TEXT   NOT NULL,
 		Firstname     TEXT   NOT NULL, 
 		Lastname      TEXT   NOT NULL, 
 		StreetAddress TEXT, 
@@ -50,9 +51,7 @@ $query = "CREATE TABLE CUSTOMERS(
 		Zipcode       INT,
 		PRIMARY KEY (Id)        ) ENGINE=InnoDB";
 execute_query($query);
-
-$query = "INSERT INTO CUSTOMERS (Firstname, Lastname) VALUES('Maaz', 'Shah')";
-execute_query($query);
+//HAVE NOT ADDED ANYTHING INTO CUSTOMERS IN THIS FILE
 
 $query = "DROP TABLE IF EXISTS INVENTORY";
 execute_query($query);
@@ -62,23 +61,24 @@ $query = "CREATE TABLE INVENTORY(
 		ProductType   TEXT         NOT NULL,
 		Product		  TEXT         NOT NULL,
 		ProductTier   TEXT         NOT NULL,
+		SeatNumber    TEXT,
 		Price         DOUBLE(6,2)  NOT NULL,
-		Stock		  INT          NOT NULL,
+		Available     INT          NOT NULL,
 		Days          INT,
 		PRIMARY KEY (ProductNumber) ) ENGINE = InnoDB";
 execute_query($query);
 
-$query = "INSERT INTO INVENTORY (ProductType, Product, ProductTier, Price, Stock) VALUES("Flight","Lufthansa Airlines, Atlanta to Copenhagen.", "Economy", 699.99, 80)";
+$query = "INSERT INTO INVENTORY (ProductType, Product, ProductTier, SeatNumber, Price, Stock) VALUES("Flight","Lufthansa Airlines, Atlanta to Copenhagen.", "Economy", "C21", 699.99, 80)";
 execute_query($query);
-$query = "INSERT INTO INVENTORY (ProductType, Product, ProductTier, Price, Stock) VALUES("Flight","Lufthansa Airlines, Atlanta to Copenhagen.", "First Class", 999.99, 20)";
+$query = "INSERT INTO INVENTORY (ProductType, Product, ProductTier, SeatNumber, Price, Stock) VALUES("Flight","Lufthansa Airlines, Atlanta to Copenhagen.", "First Class", "A5", 999.99, 20)";
 execute_query($query);
-$query = "INSERT INTO INVENTORY (ProductType, Product, ProductTier, Price, Stock) VALUES("Flight","Lufthansa Airlines, Atlanta to Jakarta.", "Economy", 799.99, 160)";
+$query = "INSERT INTO INVENTORY (ProductType, Product, ProductTier, SeatNumber, Price, Stock) VALUES("Flight","Lufthansa Airlines, Atlanta to Jakarta.", "Economy", "D3", 799.99, 160)";
 execute_query($query);
-$query = "INSERT INTO INVENTORY (ProductType, Product, ProductTier, Price, Stock) VALUES("Flight","Lufthansa Airlines, Atlanta to Jakarta.", "First Class", 1199.99, 40)";
+$query = "INSERT INTO INVENTORY (ProductType, Product, ProductTier, SeatNumber, Price, Stock) VALUES("Flight","Lufthansa Airlines, Atlanta to Jakarta.", "First Class", "A1", 1199.99, 40)";
 execute_query($query);
-$query = "INSERT INTO INVENTORY (ProductType, Product, ProductTier, Price, Stock) VALUES("Flight","Delta Airlines, Atlanta to Denver.", "Economy", 349.99, 120)";
+$query = "INSERT INTO INVENTORY (ProductType, Product, ProductTier, SeatNumber, Price, Stock) VALUES("Flight","Delta Airlines, Atlanta to Denver.", "Economy", "B87", 349.99, 120)";
 execute_query($query);
-$query = "INSERT INTO INVENTORY (ProductType, Product, ProductTier, Price, Stock) VALUES("Flight","Delta Airlines, Atlanta to Denver.", "First Class", 599.99, 30)";
+$query = "INSERT INTO INVENTORY (ProductType, Product, ProductTier, SeatNumber, Price, Stock) VALUES("Flight","Delta Airlines, Atlanta to Denver.", "First Class", "A12", 599.99, 30)";
 execute_query($query);
 $query = "INSERT INTO INVENTORY (ProductType, Product, ProductTier, Price, Stock, Days) VALUES("Rental Car", "Volkswagon Jetta", "Compact", 89.99, 3, 2)";
 execute_query($query);
@@ -88,22 +88,28 @@ $query = "INSERT INTO INVENTORY (ProductType, Product, ProductTier, Price, Stock
 execute_query($query);
 $query = "INSERT INTO INVENTORY (ProductType, Product, ProductTier, Price, Stock, Days) VALUES("Rental Car", "Cadillac XTS", "Luxury", 139.99, 3, 2)";
 execute_query($query);
-$query = "INSERT INTO INVENTORY (ProductType, Product, ProductTier, Price, Stock, Days) VALUES("Parking Fee", "Volkswagon Jetta", "Compact", 99.99, 30, 2)";
+$query = "INSERT INTO INVENTORY (ProductType, Product, ProductTier, Price, Stock, Days) VALUES("Parking Fee", "Airport Parking", "Regular", 49.99, 250, 5)";
 execute_query($query);
-
+$query = "INSERT INTO INVENTORY (ProductType, Product, ProductTier, Price, Stock, Days) VALUES("Parking Fee", "Airport Parking", "VIP", 99.99, 50, 5)";
+execute_query($query);
 
 
 $query = "DROP TABLE IF EXISTS ORDERS";
 execute_query($query);
 
+Username, Parking, FlightNumber, SeatNumber, RentalCar, FlightInfo, DateofOrder
 $query = "CREATE TABLE ORDERS(
 		ProductNumber INT          NOT NULL AUTO_INCREMENT,
-		Product       TEXT         NOT NULL,
-		Price         DOUBLE(6,2)  NOT NULL,
-		Quantity      INT          NOT NULL,
-		HenryTaxPrice DOUBLE(6,2),
+		Username      TEXT         NOT NULL,
+		Parking       TEXT,
+		FlightNumber  INT          NOT NULL,
+		SeatNumber    INT,
+		RentalCar     TEXT,
+		FlightInfo    TEXT,
+		DateofOrder   TEXT         NOT NULL,
 		PRIMARY KEY (ProductNumber) ) ENGINE = InnoDB";
 execute_query($query);
+//HAVE NOT ADDED ANYTHING INTO ORDERS
 
 
 mysql_close();
