@@ -1,8 +1,8 @@
 <?php
 
-$host = "localhost"; 
-$user = "user12"; 
-$pass = "user12"; 
+$host = "codd.gsu"; 
+$user = "mshah15"; 
+$pass = "mshah15"; 
 $db = "mshah15"; 
 
 function execute_query($query) {

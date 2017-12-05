@@ -52,7 +52,7 @@
           </tr><!---
           <?php
             //Brooks: This page is similar to the inventory page. Configure the page however you like to pull tthe user's orders. I left a sample query for you to filter orders by User's ID.
-      			$query = mysqli_query($link, "SELECT * FROM  `maaz_user_orders` WHERE `user ID matches OrderID's user that checked it out`");
+      			$query = mysqli_query($link, "SELECT * FROM ORDERS WHERE `user ID matches OrderID's user that checked it out`");
       			while ($row = mysqli_fetch_array($query))
       			{
       			?>
