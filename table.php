@@ -51,7 +51,35 @@ $query = "CREATE TABLE CUSTOMERS(
 		Zipcode       INT,
 		PRIMARY KEY (Id)        ) ENGINE=InnoDB";
 execute_query($query);
-//HAVE NOT ADDED ANYTHING INTO CUSTOMERS IN THIS FILE
+
+$query = "SELECT Firstname, Lastname, Email From CUSTOMERS";
+$rs = mysql_query($query);
+
+if (!$rs) {
+    echo "Could not execute query: $query";
+    trigger_error(mysql_error(), E_USER_ERROR); 
+} else {
+    echo "Query: $query executed\n";
+	
+$cname1 = mysql_fetch_field($rs, 4);
+$cname2 = mysql_fetch_field($rs, 5);
+$cname3 = mysql_fetch_field($rs, 3);
+
+printf("%15s %15s %15n", $cname1->name, $cname2->name, 
+    $cname3->name);
+	
+$nrows = mysql_num_rows($rs);
+
+for ($i = 0; $i < $nrows; $i++) {
+    $row = mysql_fetch_row($rs);
+    echo $row[0];
+    echo " ";
+    echo $row[1];
+    echo " ";
+    echo $row[1];
+    echo "\n";
+}
+
 
 $query = "DROP TABLE IF EXISTS INVENTORY";
 execute_query($query);
@@ -93,11 +121,34 @@ execute_query($query);
 $query = "INSERT INTO INVENTORY (ProductType, Product, ProductTier, Price, Stock, Days) VALUES("Parking Fee", "Airport Parking", "VIP", 99.99, 50, 5)";
 execute_query($query);
 
+$query = "SELECT * From INVENTORY";
+$rs = mysql_query($query);
+
+if (!$rs) {
+    echo "Could not execute query: $query";
+    trigger_error(mysql_error(), E_USER_ERROR); 
+} else {
+    echo "Query: $query executed\n";
+	
+$query = "SHOW COLUMNS FROM INVENTORY";
+$rs = mysql_query($query);
+	
+$nrows = mysql_num_rows($rs);
+
+for ($i = 0; $i < $nrows; $i++) {
+    $row = mysql_fetch_row($rs);
+    echo $row[0];
+    echo " ";
+    echo $row[1];
+    echo " ";
+    echo $row[1];
+    echo "\n";
+}
+
 
 $query = "DROP TABLE IF EXISTS ORDERS";
 execute_query($query);
 
-Username, Parking, FlightNumber, SeatNumber, RentalCar, FlightInfo, DateofOrder
 $query = "CREATE TABLE ORDERS(
 		ProductNumber INT          NOT NULL AUTO_INCREMENT,
 		Username      TEXT         NOT NULL,
@@ -109,7 +160,31 @@ $query = "CREATE TABLE ORDERS(
 		DateofOrder   TEXT         NOT NULL,
 		PRIMARY KEY (ProductNumber) ) ENGINE = InnoDB";
 execute_query($query);
-//HAVE NOT ADDED ANYTHING INTO ORDERS
+
+
+$query = "SELECT * From ORDERS";
+$rs = mysql_query($query);
+
+if (!$rs) {
+    echo "Could not execute query: $query";
+    trigger_error(mysql_error(), E_USER_ERROR); 
+} else {
+    echo "Query: $query executed\n";
+	
+$query = "SHOW COLUMNS FROM ORDERS";
+$rs = mysql_query($query);
+	
+$nrows = mysql_num_rows($rs);
+
+for ($i = 0; $i < $nrows; $i++) {
+    $row = mysql_fetch_row($rs);
+    echo $row[0];
+    echo " ";
+    echo $row[1];
+    echo " ";
+    echo $row[1];
+    echo "\n";
+}
 
 
 mysql_close();
