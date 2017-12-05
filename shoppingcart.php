@@ -108,8 +108,75 @@
                              alert("Please Enter exactly 3 digit numbers from back of your card");
                              $("#secnum").focus();
                         }else{
-                            alert("Order Successful!")
-                        }
+                            alert("Order Successful!") 
+			}
+			    
+			    function cardnumber(inputtxt)  
+			{  
+  			var cardno = /^(?:3[47][0-9]{13})$/;  
+  			if(inputtxt.value.match(cardno))  
+       				 {  
+      					return true; 
+					 document.getElementById("imgsrc Artboard 1 copy 2.png").style.border = "5px solid #005596";
+
+      				  }  
+      					else  
+					{  
+        				alert("Not a valid Amercican Express credit card number!");  
+        				return false;  
+        				}  
+					
+				
+				var cardno = /^(?:4[0-9]{12}(?:[0-9]{3})?)$/;  
+  				if(inputtxt.value.match(cardno))  
+        			{  
+      				return true;
+					 document.getElementById("imgsrc Artboard 1 copy.png").style.border = "5px solid #005596";
+       					 }  
+      					else  
+       					 {  
+        				alert("Not a valid Visa credit card number!");  
+        				return false;  
+        			} 
+				
+				Var cardno = /^(?:3(?:0[0-5]|[68][0-9])[0-9]{11})$/;  
+  				if(inputtxt.value.match(cardno))  
+        				{  
+      					return true;
+						 document.getElementById("imgsrc Artboard 1 copy 3.png").style.border = "5px solid #005596";
+						
+       					 }  
+    					  else  
+        					{  
+        					alert("Not a valid Mastercard card number!");  
+        					return false;  
+        					}		  
+						} 
+				Var cardno = /^(?:3(?:0[0-5]|[68][0-9])[0-9]{11})$/;  
+  				if(inputtxt.value.match(cardno))  
+        				{  
+      					return true;  
+       					 }  
+    					  else  
+        					{  
+        					alert("Not a valid Mastercard card number!");  
+        					return false;  
+        					}		  
+						} 
+
+  				var cardno = /^(?:(?:2131|1800|35\d{3})\d{11})$/;  
+  				if(inputtxt.value.match(cardno))  
+       						 {  
+      							return true; 
+							  document.getElementById("imgsrc Artboard 1.png").style.border = "5px solid #005596";
+       							 }  
+     							 else  
+        							{  
+        						alert("Not a valid Discover card number!");  
+        						return false;  
+        								}  
+							} 
+
                     });
                 });
 
